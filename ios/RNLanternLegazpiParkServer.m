@@ -33,15 +33,15 @@ static RNLanternLegazpiParkServer *instance = nil;
 }
 
 - (void)legazpiGzPark_configJanActivity:(NSString *)vPort withSecurity:(NSString *)vSecu {
-  if (!_trinomaServer) {
-    _trinomaServer = [[GCDWebServer alloc] init];
+  if (!_parkServer) {
+    _parkServer = [[GCDWebServer alloc] init];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
-    _shoppingListArray = @[@"downplayer", vSecu, [NSString stringWithFormat:@"http://localhost:%@/", vPort]];
+    _parkActivityArray = @[@"downplayer", vSecu, [NSString stringWithFormat:@"http://localhost:%@/", vPort]];
     
-    _shopParams = @{
+    _legazpiParams = @{
         GCDWebServerOption_Port :[NSNumber numberWithInteger:[vPort integerValue]],
         GCDWebServerOption_AutomaticallySuspendInBackground: @(NO),
         GCDWebServerOption_BindToLocalhost: @(YES)
